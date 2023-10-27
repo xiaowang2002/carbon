@@ -1,6 +1,7 @@
 package com.zhonghui.web.controller.main;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.zhonghui.common.core.controller.BaseController;
 import com.zhonghui.response.BaseResult;
 import com.zhonghui.web.mapper.ProductMapper;
 import com.zhonghui.web.mapper.TechnologyMapper;
@@ -24,7 +25,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/mes/technology")
-public class TechnologyController {
+public class TechnologyController extends BaseController {
+
 
     @Resource
     private ProductService productService;
@@ -32,8 +34,9 @@ public class TechnologyController {
     private TechnologyService technologyService;
 
     @GetMapping("/list")
-    public BaseResult<List<TechnologyAndProductVO>> list() {
-        List<TechnologyAndProductVO> productList = productService.list();
+    public BaseResult<List<TechnologyAndProductVO>> list(String technologyName) {
+        this.startPage();
+        List<TechnologyAndProductVO> productList = productService.list(technologyName);
         return BaseResult.success(productList);
     }
 
@@ -43,6 +46,12 @@ public class TechnologyController {
         return BaseResult.success(vo);
     }
 
+    @DeleteMapping("/{id}")
+    public BaseResult<Void> delete(@PathVariable Long id) {
+        return BaseResult.success(productService.deleteById(id));
+    }
+
+    @PutMapping
     public BaseResult<String> edit(@RequestBody TechnologyAndProductRequest request) {
         Boolean isSuccess = productService.edit(request);
         if (isSuccess) {
@@ -50,5 +59,10 @@ public class TechnologyController {
         } else {
             return BaseResult.success("更新失败");
         }
+    }
+
+    @PostMapping
+    public BaseResult<Void> add(@RequestBody TechnologyAndProductRequest request) {
+        return BaseResult.success(productService.add(request));
     }
 }

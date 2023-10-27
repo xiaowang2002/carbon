@@ -1,6 +1,7 @@
 package com.zhonghui.web.mapper;
 
 import com.zhonghui.web.pojo.Technology;
+import com.zhonghui.web.request.TechnologyAndProductRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,4 +16,10 @@ import java.util.List;
 @Mapper
 public interface TechnologyMapper {
     List<Technology> list();
+
+    void edit(TechnologyAndProductRequest request);
+
+    void deleteById(Long id);
+
+    void add(TechnologyAndProductRequest request);
 }

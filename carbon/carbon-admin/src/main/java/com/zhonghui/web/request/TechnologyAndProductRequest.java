@@ -11,8 +11,11 @@ import lombok.Data;
  */
 @Data
 public class TechnologyAndProductRequest {
+    private Long id;
+    private Long productId;
     private String productName;
     private String technologyName;
     private String unitPowerConsumption;
     private String remark;
+    private String technologyDescribe;
 }

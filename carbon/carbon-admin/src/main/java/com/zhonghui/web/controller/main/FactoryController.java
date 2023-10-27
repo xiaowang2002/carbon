@@ -3,6 +3,8 @@ package com.zhonghui.web.controller.main;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import com.zhonghui.response.BaseResult;
 import com.zhonghui.web.pojo.Factory;
+import com.zhonghui.web.pojo.FactoryDevice;
+import com.zhonghui.web.service.FactoryDeviceService;
 import com.zhonghui.web.service.FactoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +28,9 @@ public class FactoryController {
     @Resource
     private FactoryService factoryService;
 
+    @Resource
+    private FactoryDeviceService factoryDeviceService;
+
 
     @ApiOperation("工厂建模数据列表")
     @GetMapping("/list")
@@ -38,6 +43,12 @@ public class FactoryController {
     public BaseResult<Factory> getFactoryById(@PathVariable Long id) {
         Factory factory = factoryService.getFactoryById(id);
         return BaseResult.success(factory);
+    }
+
+    @PostMapping("/addFactoryDevices")
+    public BaseResult<Void> addFactoryDevices(FactoryDevice factoryDevice) {
+        factoryDeviceService.add(factoryDevice);
+        return BaseResult.success();
     }
 
     @PutMapping

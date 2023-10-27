@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhonghui.web.mapper.FactoryDeviceMapper">
+    <insert id="add">
+        insert into mes_factory_device_item
+        values(null,#{deviceName},#{deviceCode},#{deviceModel},#{produceDate},#{produceCode},#{manufacturer},#{factoryId})
+    </insert>
+
+    <delete id="delete">
+        delete from mes_factory_device_item
+        where factory_id = #{id}
+    </delete>
+</mapper>

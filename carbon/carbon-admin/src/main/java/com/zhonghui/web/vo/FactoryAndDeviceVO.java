@@ -7,6 +7,8 @@ import com.zhonghui.web.pojo.FactoryDevice;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * @ClassName FactoryAndDeviceVO
  * @Description
@@ -19,11 +21,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FactoryAndDeviceVO extends Factory {
-    private String deviceName;
-    private String deviceCode;
-    private String deviceModel;
-    private String produceDate;
-    private String produceCode;
-    private String manufacturer;
-    private Long factoryId;
+    private List<FactoryDevice> factoryDeviceList;
 }

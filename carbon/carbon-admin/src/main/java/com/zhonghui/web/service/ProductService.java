@@ -1,7 +1,5 @@
 package com.zhonghui.web.service;
 
-import com.zhonghui.web.pojo.Product;
-import com.zhonghui.web.pojo.Technology;
 import com.zhonghui.web.request.TechnologyAndProductRequest;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
 
@@ -20,9 +18,13 @@ public interface ProductService {
      *
      * @return 查询结果
      */
-    List<TechnologyAndProductVO> list();
+    List<TechnologyAndProductVO> list(String technologyName);
 
     TechnologyAndProductVO getById(Long id);
 
     Boolean edit(TechnologyAndProductRequest request);
+
+    String deleteById(Long id);
+
+    String add(TechnologyAndProductRequest request);
 }

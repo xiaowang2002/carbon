@@ -1,6 +1,7 @@
 package com.zhonghui.web.mapper;
 
 import com.zhonghui.web.pojo.Factory;
+import com.zhonghui.web.pojo.FactoryDevice;
 import com.zhonghui.web.vo.FactoryAndDeviceVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,11 +18,13 @@ import java.util.List;
 public interface FactoryMapper {
     List<Factory> list(Factory factory);
 
-    FactoryAndDeviceVO getFactoryById(Long id);
+    List<FactoryDevice> getFactoryDevicesById(Long id);
 
     int edit(Factory factory);
 
     int delete(Long id);
 
     int add(Factory factory);
+
+    Factory getFactoryById(Long id);
 }

@@ -3,9 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhonghui.web.mapper.TechnologyMapper">
+    <insert id="add">
+        insert into mes_technology(technology_name,unit_power_consumption,remark,technology_describe)
+        values(#{technologyName},#{unitPowerConsumption},#{remark},#{technologyDescribe})
+    </insert>
+    <update id="edit">
+        update mes_technology
+        <trim prefix="set" suffixOverrides=",">
+            <if test="technologyName != null and technologyName != ''">technology_name = #{technologyName},</if>
+            <if test="unitPowerConsumption != null and unitPowerConsumption != ''">unit_power_consumption =
+                #{unitPowerConsumption},
+            </if>
+            <if test="remark != null and remark != ''">remark =
+                #{remark},
+            </if>
+            <if test="technologyDescribe != null and technologyDescribe != ''">technology_describe =
+                #{technologyDescribe}
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from
+        mes_technology
+        where id = #{id}
+    </delete>
 
     <select id="list" resultType="com.zhonghui.web.pojo.Technology">
         select *
-        from mes_technology_id =
+        from mes_technology_id
     </select>
 </mapper>

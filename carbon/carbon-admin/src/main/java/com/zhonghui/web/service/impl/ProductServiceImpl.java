@@ -1,7 +1,7 @@
 package com.zhonghui.web.service.impl;
 
 import com.zhonghui.web.mapper.ProductMapper;
-import com.zhonghui.web.pojo.Product;
+import com.zhonghui.web.mapper.TechnologyMapper;
 import com.zhonghui.web.request.TechnologyAndProductRequest;
 import com.zhonghui.web.service.ProductService;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
@@ -23,9 +23,12 @@ public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductMapper productMapper;
 
+    @Resource
+    private TechnologyMapper technologyMapper;
+
     @Override
-    public List<TechnologyAndProductVO> list() {
-        return productMapper.list();
+    public List<TechnologyAndProductVO> list(String technologyName) {
+        return productMapper.list(technologyName);
     }
 
     @Override
@@ -35,6 +38,21 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Boolean edit(TechnologyAndProductRequest request) {
-        return productMapper.edit(request) > 0;
+        technologyMapper.edit(request);
+        productMapper.edit(request);
+        return true;
+    }
+
+    @Override
+    public String deleteById(Long id) {
+        technologyMapper.deleteById(id);
+        return null;
+    }
+
+    @Override
+    public String add(TechnologyAndProductRequest request) {
+        productMapper.add(request);
+        technologyMapper.add(request);
+        return "";
     }
 }

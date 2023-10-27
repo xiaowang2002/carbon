@@ -1,9 +1,12 @@
 package com.zhonghui.web.service.impl;
 
+import com.zhonghui.web.mapper.FactoryDeviceMapper;
 import com.zhonghui.web.mapper.FactoryMapper;
 import com.zhonghui.web.pojo.Factory;
+import com.zhonghui.web.pojo.FactoryDevice;
 import com.zhonghui.web.service.FactoryService;
 import com.zhonghui.web.vo.FactoryAndDeviceVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +25,9 @@ public class FactoryServiceImpl implements FactoryService {
     @Resource
     private FactoryMapper factoryMapper;
 
+    @Resource
+    private FactoryDeviceMapper factoryDeviceMapper;
+
     @Override
     public List<Factory> list(Factory factory) {
         return factoryMapper.list(factory);
@@ -29,7 +35,12 @@ public class FactoryServiceImpl implements FactoryService {
 
     @Override
     public FactoryAndDeviceVO getFactoryById(Long id) {
-        return factoryMapper.getFactoryById(id);
+        Factory factory = factoryMapper.getFactoryById(id);
+        List<FactoryDevice> factoryDevices = factoryMapper.getFactoryDevicesById(id);
+        FactoryAndDeviceVO factoryAndDeviceVO = new FactoryAndDeviceVO();
+        BeanUtils.copyProperties(factory, factoryAndDeviceVO);
+        factoryAndDeviceVO.setFactoryDeviceList(factoryDevices);
+        return factoryAndDeviceVO;
     }
 
     @Override
@@ -40,6 +51,7 @@ public class FactoryServiceImpl implements FactoryService {
 
     @Override
     public Boolean delete(Long id) {
+        factoryDeviceMapper.delete(id);
         return factoryMapper.delete(id) > 0;
     }
 

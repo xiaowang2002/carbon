@@ -16,9 +16,11 @@ import java.util.List;
  */
 @Mapper
 public interface ProductMapper {
-    List<TechnologyAndProductVO> list();
+    List<TechnologyAndProductVO> list(String technologyName);
 
     TechnologyAndProductVO getById(Long id);
 
     int edit(TechnologyAndProductRequest request);
+
+    void add(TechnologyAndProductRequest request);
 }

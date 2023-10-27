@@ -32,11 +32,24 @@
         </where>
     </select>
 
-    <select id="getFactoryById" resultType="com.zhonghui.web.vo.FactoryAndDeviceVO">
-        select *
-        from mes_factory factory left join mes_factory_device_item device on factory.id = device.factory_id
+    <resultMap id="FactoryAndDeviceVOMap" type="com.zhonghui.web.vo.FactoryAndDeviceVO">
+
+    </resultMap>
+
+
+    <select id="getFactoryDevicesById" resultType="com.zhonghui.web.pojo.FactoryDevice">
+        select device.*
+        from mes_factory factory inner join mes_factory_device_item device on factory.id = device.factory_id
         <where>
             factory.id = #{id}
+        </where>
+    </select>
+
+    <select id="getFactoryById" resultType="com.zhonghui.web.pojo.Factory">
+        select *
+        from mes_factory
+        <where>
+            id = #{id}
         </where>
     </select>
 
