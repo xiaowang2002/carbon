@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhonghui.web.mapper.FactoryMapper">
+    <insert id="add">
+        insert into mes_factory
+        values
+        (null,#{product},#{productionLine},#{productMode},#{specifications},#{factoryDescribe})
+    </insert>
+
+    <update id="edit">
+        update mes_factory
+        <trim prefix="set" suffixOverrides=",">
+            <if test="product != null and product != ''">product = #{product},</if>
+            <if test="productionLine != null and productionLine != ''">production_line = #{productionLine},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from mes_factory where id = #{id}
+    </delete>
+
+    <select id="list" resultType="com.zhonghui.web.pojo.Factory">
+        select *
+        from mes_factory
+        <where>
+            <if test="productionLine != null and productionLine != ''">production_line like
+                concat('%',#{productionLine},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getFactoryById" resultType="com.zhonghui.web.vo.FactoryAndDeviceVO">
+        select *
+        from mes_factory factory left join mes_factory_device_item device on factory.id = device.factory_id
+        <where>
+            factory.id = #{id}
+        </where>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhonghui.web.mapper.TechnologyMapper">
+
+    <select id="list" resultType="com.zhonghui.web.pojo.Technology">
+        select *
+        from mes_technology_id =
+    </select>
+</mapper>

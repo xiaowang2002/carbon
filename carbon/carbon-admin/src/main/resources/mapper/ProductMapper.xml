@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhonghui.web.mapper.ProductMapper">
+    <update id="edit">
+        update mes_technology technology left join mes_product product on technology.product_id = product.id
+        <trim prefix="set" suffixOverrides=",">
+            <if test="productName != null and product"></if>
+        </trim>
+    </update>
+
+    <select id="list" resultType="com.zhonghui.web.vo.TechnologyAndProductVO">
+        select *
+        from mes_technology technology left join mes_product product on technology.product_id = product.id
+    </select>
+
+    <select id="getById" resultType="com.zhonghui.web.vo.TechnologyAndProductVO">
+        select *
+        from mes_technology technology left join mes_product product on technology.product_id = product.id
+        <where>
+            technology.id = #{id}
+        </where>
+    </select>
+</mapper>
