@@ -74,8 +74,8 @@ public class FactoryController {
     }
 
     @PostMapping
-    public BaseResult<String> add(@RequestBody Factory factory) {
-        Boolean isSuccess = factoryService.add(factory);
+    public BaseResult<String> add(@RequestBody FactoryAndDeviceAndMaterialRequest request) {
+        Boolean isSuccess = factoryService.add(request);
         if (isSuccess) {
             return BaseResult.success("添加成功");
         } else {

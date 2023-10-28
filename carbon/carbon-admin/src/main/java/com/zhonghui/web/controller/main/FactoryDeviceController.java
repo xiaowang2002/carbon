@@ -28,4 +28,9 @@ public class FactoryDeviceController {
         factoryDeviceService.deleteById(id);
         return BaseResult.success();
     }
+
+    @DeleteMapping
+    public BaseResult<Boolean> delete() {
+        return BaseResult.success();
+    }
 }

@@ -9,11 +9,13 @@ import com.zhonghui.web.pojo.Material;
 import com.zhonghui.web.request.FactoryAndDeviceAndMaterialRequest;
 import com.zhonghui.web.service.FactoryService;
 import com.zhonghui.web.vo.FactoryAndDeviceVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName FactoryServiceImpl
@@ -23,6 +25,7 @@ import java.util.List;
  * @Version 17.0.8
  */
 @Service
+@Slf4j
 public class FactoryServiceImpl implements FactoryService {
 
     @Resource
@@ -69,7 +72,22 @@ public class FactoryServiceImpl implements FactoryService {
     }
 
     @Override
-    public Boolean add(Factory factory) {
-        return factoryMapper.add(factory) > 0;
+    public Boolean add(FactoryAndDeviceAndMaterialRequest request) {
+        Factory factory = new Factory();
+        BeanUtils.copyProperties(request, factory);
+        factoryMapper.add(factory);
+
+        log.info("factory:{}", factory.toString());
+
+        List<FactoryDevice> factoryDeviceList = request.getFactoryDeviceList();
+
+        factoryDeviceList = factoryDeviceList.stream().map(item -> {
+            item.setFactoryId(factory.getId());
+            return item;
+        }).collect(Collectors.toList());
+
+        factoryDeviceMapper.add(factoryDeviceList);
+
+        return true;
     }
 }

@@ -49,8 +49,8 @@ public interface FactoryService {
     /**
      * 添加工厂建模
      *
-     * @param factory 工厂建模数据
+     * @param request 工厂建模数据
      * @return 添加结果
      */
-    Boolean add(Factory factory);
+    Boolean add(FactoryAndDeviceAndMaterialRequest request);
 }

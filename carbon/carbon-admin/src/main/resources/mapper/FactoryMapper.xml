@@ -3,10 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhonghui.web.mapper.FactoryMapper">
-    <insert id="add">
-        insert into mes_factory(product,product_line,factory_describe)
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into mes_factory(product,production_line,product_mode,specifications,factory_describe)
         values
-        (#{product},#{productionLine},#{factoryDescribe})
+        (#{product},#{productionLine},#{productMode},#{specifications},#{factoryDescribe})
     </insert>
 
     <update id="edit">
