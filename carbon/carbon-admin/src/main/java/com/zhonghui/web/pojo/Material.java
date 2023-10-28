@@ -21,7 +21,7 @@ public class Material {
     private String materialModel;
     private String materialSpecifications;
     private String materialUnit;
-    private String price;
+    private String materialPrice;
     private String materialType;
     private String remark;
 }

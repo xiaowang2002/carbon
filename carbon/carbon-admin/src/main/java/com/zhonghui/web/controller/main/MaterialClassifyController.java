@@ -30,15 +30,6 @@ public class MaterialClassifyController {
     @Resource
     private MaterialClassifyService materialClassifyService;
 
-    /**
-     * 这段代码的作用是将一个 List<MaterialClassify> 转换为 List<MaterialClassifyVO>。它首先根据 pid 属性对 MaterialClassify 对象进行分组，然后根据这些分组创建 MaterialClassifyVO 对象，并将其嵌套在对应的父对象中。让我们逐步分析这段代码：
-     * List<MaterialClassify> list = materialClassifyService.list();：从 materialClassifyService 中获取 MaterialClassify 对象的列表。
-     * Map<Long, List<MaterialClassify>> perListMap = list.stream().collect(Collectors.groupingBy(MaterialClassify::getPid));：这行代码根据 pid 属性将 list 分组，并创建一个 Map 对象，键为 pid，值为对应的 MaterialClassify 对象列表。
-     * List<MaterialClassifyVO> voList = list.stream().map(item -> { ... }).collect(Collectors.toList());：这部分代码使用流操作对每个 MaterialClassify 对象进行转换。对于每个对象，它创建一个新的 MaterialClassifyVO 对象，并使用 BeanUtils.copyProperties 将属性从原始对象复制到新对象。然后，它通过 perListMap.get(item.getId()) 设置了子对象列表。最后，它将转换后的 MaterialClassifyVO 对象收集到一个新的列表 voList 中并返回。
-     * 总的来说，这段代码的目的是将原始的 MaterialClassify 列表转换为带有嵌套子列表的 MaterialClassifyVO 列表。这种转换通常用于构建树状结构的数据模型，其中 MaterialClassifyVO 表示节点，而 children 属性表示该节点的子节点列表。
-     *
-     * @return
-     */
     @GetMapping("/tree")
     public List<MaterialClassifyVO> buildTree() {
         List<MaterialClassify> list = materialClassifyService.list();

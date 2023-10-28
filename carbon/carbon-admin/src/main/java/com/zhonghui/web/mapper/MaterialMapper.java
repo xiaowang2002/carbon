@@ -1,6 +1,9 @@
 package com.zhonghui.web.mapper;
 
+import com.zhonghui.web.pojo.Material;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @ClassName MaterialMapper
@@ -11,4 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface MaterialMapper {
+    List<Material> getMaterialListByClassifyId(Long id);
+
+    void update(Material material);
 }

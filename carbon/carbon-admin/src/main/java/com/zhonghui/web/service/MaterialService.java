@@ -1,5 +1,9 @@
 package com.zhonghui.web.service;
 
+import com.zhonghui.web.pojo.Material;
+
+import java.util.List;
+
 /**
  * @ClassName MaterialService
  * @Description
@@ -8,4 +12,5 @@ package com.zhonghui.web.service;
  * @Version 11.0.15
  */
 public interface MaterialService {
+    List<Material> getMaterialListByClassifyId(Long id);
 }

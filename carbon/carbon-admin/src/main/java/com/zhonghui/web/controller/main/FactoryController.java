@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ser.Serializers;
 import com.zhonghui.response.BaseResult;
 import com.zhonghui.web.pojo.Factory;
 import com.zhonghui.web.pojo.FactoryDevice;
+import com.zhonghui.web.request.FactoryAndDeviceAndMaterialRequest;
 import com.zhonghui.web.service.FactoryDeviceService;
 import com.zhonghui.web.service.FactoryService;
 import com.zhonghui.web.vo.FactoryAndDeviceVO;
@@ -53,8 +54,8 @@ public class FactoryController {
 //    }
 
     @PutMapping
-    public BaseResult<String> edit(@RequestBody FactoryAndDeviceVO factoryAndDeviceVO) {
-        Boolean isSuccess = factoryService.edit(factoryAndDeviceVO);
+    public BaseResult<String> edit(@RequestBody FactoryAndDeviceAndMaterialRequest request) {
+        Boolean isSuccess = factoryService.edit(request);
         if (isSuccess) {
             return BaseResult.success("更改成功");
         } else {

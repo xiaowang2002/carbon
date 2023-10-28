@@ -2,8 +2,11 @@ package com.zhonghui.web.service.impl;
 
 import com.zhonghui.web.mapper.FactoryDeviceMapper;
 import com.zhonghui.web.mapper.FactoryMapper;
+import com.zhonghui.web.mapper.MaterialMapper;
 import com.zhonghui.web.pojo.Factory;
 import com.zhonghui.web.pojo.FactoryDevice;
+import com.zhonghui.web.pojo.Material;
+import com.zhonghui.web.request.FactoryAndDeviceAndMaterialRequest;
 import com.zhonghui.web.service.FactoryService;
 import com.zhonghui.web.vo.FactoryAndDeviceVO;
 import org.springframework.beans.BeanUtils;
@@ -44,15 +47,18 @@ public class FactoryServiceImpl implements FactoryService {
     }
 
     @Override
-    public Boolean edit(FactoryAndDeviceVO factoryAndDeviceVO) {
-        int i = factoryMapper.edit(factoryAndDeviceVO);
-        List<FactoryDevice> factoryDeviceList = factoryAndDeviceVO.getFactoryDeviceList();
-        factoryDeviceMapper.delete(factoryAndDeviceVO.getId());
-        Long factoryId = factoryAndDeviceVO.getId();
+    public Boolean edit(FactoryAndDeviceAndMaterialRequest request) {
+        int i = factoryMapper.edit(request);
+        List<FactoryDevice> factoryDeviceList = request.getFactoryDeviceList();
+        factoryDeviceMapper.delete(request.getId());
+        Long factoryId = request.getId();
         for (FactoryDevice factoryDevice : factoryDeviceList) {
             factoryDevice.setFactoryId(factoryId);
         }
-        factoryDeviceMapper.add(factoryDeviceList);
+
+        if (!factoryDeviceList.isEmpty()) {
+            factoryDeviceMapper.add(factoryDeviceList);
+        }
         return i > 0;
     }
 

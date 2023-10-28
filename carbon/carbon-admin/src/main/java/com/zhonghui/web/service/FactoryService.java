@@ -1,6 +1,7 @@
 package com.zhonghui.web.service;
 
 import com.zhonghui.web.pojo.Factory;
+import com.zhonghui.web.request.FactoryAndDeviceAndMaterialRequest;
 import com.zhonghui.web.vo.FactoryAndDeviceVO;
 
 import java.util.List;
@@ -32,10 +33,10 @@ public interface FactoryService {
     /**
      * 修改工厂建模
      *
-     * @param factoryAndDeviceVO 工厂建模参数
+     * @param request 工厂建模参数
      * @return 更新结果
      */
-    Boolean edit(FactoryAndDeviceVO factoryAndDeviceVO);
+    Boolean edit(FactoryAndDeviceAndMaterialRequest request);
 
     /**
      * 删除工厂
