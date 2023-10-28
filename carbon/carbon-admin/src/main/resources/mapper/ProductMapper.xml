@@ -7,14 +7,6 @@
         insert into mes_product(product_name)
         values(#{productName})
     </insert>
-    <update id="edit">
-        update mes_product
-        <trim prefix="set" suffixOverrides=",">
-            <if test="productName != null and productName != ''">product_name = #{productName}</if>
-        </trim>
-        where id = #{productId}
-    </update>
-
     <select id="list" resultType="com.zhonghui.web.vo.TechnologyAndProductVO">
         select *
         from mes_technology technology left join mes_product product on technology.product_id = product.id
@@ -31,5 +23,9 @@
         <where>
             technology.id = #{id}
         </where>
+    </select>
+    <select id="getAll" resultType="com.zhonghui.web.pojo.Product">
+        select *
+        from mes_product product
     </select>
 </mapper>

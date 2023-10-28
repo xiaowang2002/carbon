@@ -4,22 +4,21 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhonghui.web.mapper.TechnologyMapper">
     <insert id="add">
-        insert into mes_technology(technology_name,unit_power_consumption,remark,technology_describe)
-        values(#{technologyName},#{unitPowerConsumption},#{remark},#{technologyDescribe})
+        insert into mes_technology(technology_name,product_id,unit_power_consumption,remark,technology_describe)
+        values(#{technologyName},#{productId},#{unitPowerConsumption},#{remark},#{technologyDescribe})
     </insert>
-    <update id="edit">
+    <update id="edit" parameterType="map">
         update mes_technology
         <trim prefix="set" suffixOverrides=",">
             <if test="technologyName != null and technologyName != ''">technology_name = #{technologyName},</if>
             <if test="unitPowerConsumption != null and unitPowerConsumption != ''">unit_power_consumption =
                 #{unitPowerConsumption},
             </if>
-            <if test="remark != null and remark != ''">remark =
-                #{remark},
-            </if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
             <if test="technologyDescribe != null and technologyDescribe != ''">technology_describe =
-                #{technologyDescribe}
+                #{technologyDescribe},
             </if>
+            <if test="productId != null and productId != ''">product_id = #{productId},</if>
         </trim>
         where id = #{id}
     </update>

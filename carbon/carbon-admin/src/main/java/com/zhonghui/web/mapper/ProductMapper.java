@@ -23,4 +23,6 @@ public interface ProductMapper {
     int edit(TechnologyAndProductRequest request);
 
     void add(TechnologyAndProductRequest request);
+
+    List<Product> getAll();
 }

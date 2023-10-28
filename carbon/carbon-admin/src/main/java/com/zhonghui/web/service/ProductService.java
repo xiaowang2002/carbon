@@ -1,5 +1,6 @@
 package com.zhonghui.web.service;
 
+import com.zhonghui.web.pojo.Product;
 import com.zhonghui.web.request.TechnologyAndProductRequest;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
 
@@ -27,4 +28,6 @@ public interface ProductService {
     String deleteById(Long id);
 
     String add(TechnologyAndProductRequest request);
+
+    List<Product> getAllProduct();
 }
