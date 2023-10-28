@@ -32,10 +32,10 @@ public interface FactoryService {
     /**
      * 修改工厂建模
      *
-     * @param factory 工厂建模参数
+     * @param factoryAndDeviceVO 工厂建模参数
      * @return 更新结果
      */
-    Boolean edit(Factory factory);
+    Boolean edit(FactoryAndDeviceVO factoryAndDeviceVO);
 
     /**
      * 删除工厂

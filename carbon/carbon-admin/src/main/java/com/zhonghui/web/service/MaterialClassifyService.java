@@ -3,6 +3,7 @@ package com.zhonghui.web.service;
 import com.zhonghui.web.pojo.MaterialClassify;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName MaterialClassifyService
@@ -12,5 +13,6 @@ import java.util.List;
  * @Version 11.0.15
  */
 public interface MaterialClassifyService {
-    List<MaterialClassify> fetchMaterialClassifyData();
+
+    List<MaterialClassify> list();
 }

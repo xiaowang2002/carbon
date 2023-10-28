@@ -14,6 +14,7 @@
         <trim prefix="set" suffixOverrides=",">
             <if test="product != null and product != ''">product = #{product},</if>
             <if test="productionLine != null and productionLine != ''">production_line = #{productionLine},</if>
+            <if test="factoryDescribe != null and factoryDescribe != ''">factory_describe = #{factoryDescribe},</if>
         </trim>
         where id = #{id}
     </update>

@@ -11,5 +11,7 @@ import com.zhonghui.web.pojo.FactoryDevice;
  */
 public interface FactoryDeviceService {
 
-    void add(FactoryDevice factoryDevice);
+//    void add(FactoryDevice factoryDevice);
+
+    void deleteById(Long id);
 }

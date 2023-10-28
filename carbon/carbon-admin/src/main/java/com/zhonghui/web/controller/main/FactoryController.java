@@ -6,6 +6,7 @@ import com.zhonghui.web.pojo.Factory;
 import com.zhonghui.web.pojo.FactoryDevice;
 import com.zhonghui.web.service.FactoryDeviceService;
 import com.zhonghui.web.service.FactoryService;
+import com.zhonghui.web.vo.FactoryAndDeviceVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -45,15 +46,15 @@ public class FactoryController {
         return BaseResult.success(factory);
     }
 
-    @PostMapping("/addFactoryDevices")
-    public BaseResult<Void> addFactoryDevices(FactoryDevice factoryDevice) {
-        factoryDeviceService.add(factoryDevice);
-        return BaseResult.success();
-    }
+//    @PostMapping("/addFactoryDevices")
+//    public BaseResult<Void> addFactoryDevices(FactoryDevice factoryDevice) {
+//        factoryDeviceService.add(factoryDevice);
+//        return BaseResult.success();
+//    }
 
     @PutMapping
-    public BaseResult<String> edit(@RequestBody Factory factory) {
-        Boolean isSuccess = factoryService.edit(factory);
+    public BaseResult<String> edit(@RequestBody FactoryAndDeviceVO factoryAndDeviceVO) {
+        Boolean isSuccess = factoryService.edit(factoryAndDeviceVO);
         if (isSuccess) {
             return BaseResult.success("更改成功");
         } else {

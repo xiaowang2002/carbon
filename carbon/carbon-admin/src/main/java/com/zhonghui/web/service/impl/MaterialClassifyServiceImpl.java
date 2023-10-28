@@ -4,10 +4,12 @@ import com.zhonghui.web.mapper.MaterialClassifyMapper;
 import com.zhonghui.web.pojo.MaterialClassify;
 import com.zhonghui.web.service.MaterialClassifyService;
 import com.zhonghui.web.service.MaterialService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName MaterialClassifyServiceImpl
@@ -19,11 +21,12 @@ import java.util.List;
 @Service
 public class MaterialClassifyServiceImpl implements MaterialClassifyService {
 
-    @Resource
+    @Autowired
     private MaterialClassifyMapper materialClassifyMapper;
 
+
     @Override
-    public List<MaterialClassify> fetchMaterialClassifyData() {
+    public List<MaterialClassify> list() {
         return materialClassifyMapper.fetchMaterialClassifyData();
     }
 }

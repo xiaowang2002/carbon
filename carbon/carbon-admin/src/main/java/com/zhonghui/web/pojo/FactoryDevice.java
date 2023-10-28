@@ -2,6 +2,8 @@ package com.zhonghui.web.pojo;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @ClassName FactoryDevice
  * @Description
@@ -15,7 +17,7 @@ public class FactoryDevice {
     private String deviceName;
     private String deviceCode;
     private String deviceModel;
-    private String produceDate;
+    private Date produceDate;
     private String produceCode;
     private String manufacturer;
     private Long factoryId;

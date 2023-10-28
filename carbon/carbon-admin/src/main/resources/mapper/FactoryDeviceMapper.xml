@@ -3,13 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhonghui.web.mapper.FactoryDeviceMapper">
-    <insert id="add">
+    <insert id="add" parameterType="java.util.List">
         insert into mes_factory_device_item
-        values(null,#{deviceName},#{deviceCode},#{deviceModel},#{produceDate},#{produceCode},#{manufacturer},#{factoryId})
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (null,#{item.deviceName},#{item.deviceCode},#{item.deviceModel},#{item.produceDate},#{item.produceCode},#{item.manufacturer},#{item.factoryId})
+        </foreach>
     </insert>
+
 
     <delete id="delete">
         delete from mes_factory_device_item
         where factory_id = #{id}
+    </delete>
+    <delete id="deleteById">
+        delete from mes_factory_device_item
+        where id = #{id}
     </delete>
 </mapper>

@@ -21,8 +21,13 @@ public class FactoryDeviceServiceImpl implements FactoryDeviceService {
     @Resource
     private FactoryDeviceMapper factoryDeviceMapper;
 
+//    @Override
+//    public void add(FactoryDevice factoryDevice) {
+//        factoryDeviceMapper.add(factoryDevice);
+//    }
+
     @Override
-    public void add(FactoryDevice factoryDevice) {
-        factoryDeviceMapper.add(factoryDevice);
+    public void deleteById(Long id) {
+        factoryDeviceMapper.deleteById(id);
     }
 }

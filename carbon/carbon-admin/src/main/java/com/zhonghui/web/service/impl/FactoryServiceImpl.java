@@ -44,8 +44,15 @@ public class FactoryServiceImpl implements FactoryService {
     }
 
     @Override
-    public Boolean edit(Factory factory) {
-        int i = factoryMapper.edit(factory);
+    public Boolean edit(FactoryAndDeviceVO factoryAndDeviceVO) {
+        int i = factoryMapper.edit(factoryAndDeviceVO);
+        List<FactoryDevice> factoryDeviceList = factoryAndDeviceVO.getFactoryDeviceList();
+        factoryDeviceMapper.delete(factoryAndDeviceVO.getId());
+        Long factoryId = factoryAndDeviceVO.getId();
+        for (FactoryDevice factoryDevice : factoryDeviceList) {
+            factoryDevice.setFactoryId(factoryId);
+        }
+        factoryDeviceMapper.add(factoryDeviceList);
         return i > 0;
     }
 
