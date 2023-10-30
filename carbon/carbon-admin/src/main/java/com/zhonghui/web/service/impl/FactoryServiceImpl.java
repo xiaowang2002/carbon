@@ -12,6 +12,7 @@ import com.zhonghui.web.vo.FactoryAndDeviceVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -49,6 +50,7 @@ public class FactoryServiceImpl implements FactoryService {
         return factoryAndDeviceVO;
     }
 
+    @Transactional
     @Override
     public Boolean edit(FactoryAndDeviceAndMaterialRequest request) {
         int i = factoryMapper.edit(request);
@@ -71,6 +73,7 @@ public class FactoryServiceImpl implements FactoryService {
         return factoryMapper.delete(id) > 0;
     }
 
+    @Transactional
     @Override
     public Boolean add(FactoryAndDeviceAndMaterialRequest request) {
         Factory factory = new Factory();
