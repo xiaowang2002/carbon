@@ -5,6 +5,7 @@ import com.zhonghui.web.mapper.TechnologyMapper;
 import com.zhonghui.web.pojo.Product;
 import com.zhonghui.web.request.TechnologyAndProductRequest;
 import com.zhonghui.web.service.ProductService;
+import com.zhonghui.web.vo.ProductAndConsumptionVO;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +59,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllProduct() {
         return productMapper.getAll();
+    }
+
+    @Override
+    public List<ProductAndConsumptionVO> getList() {
+        return productMapper.getList();
     }
 }

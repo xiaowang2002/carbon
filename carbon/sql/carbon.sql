@@ -91,22 +91,24 @@ INSERT INTO `mes_factory` VALUES (3, '螺丝钉', '产线三', '大号', '1', 'x
 -- ----------------------------
 DROP TABLE IF EXISTS `mes_product`;
 CREATE TABLE `mes_product`  (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `mode_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '模型名称',
-  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品',
-  `product_model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品型号',
-  `product_sku` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品规格',
-  `product_unit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品单位',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+                                `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '编号',
+                                `mode_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '模型名称',
+                                `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品',
+                                `product_model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品型号',
+                                `product_sku` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品规格',
+                                `product_unit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品单位',
+                                `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+                                `dv_id` bigint NULL DEFAULT NULL COMMENT '能耗id',
+                                `producted_num` bigint NULL DEFAULT NULL COMMENT '已产数量',
+                                PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '产品建模' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mes_product
 -- ----------------------------
-INSERT INTO `mes_product` VALUES (1, '电子模型', '螺丝钉', 'LST101', '小型', '个', 'xxx');
-INSERT INTO `mes_product` VALUES (2, '手机模型', '螺母', 'LM101', '小型', '个', 'xxx');
-INSERT INTO `mes_product` VALUES (14, '产品模型', '螺母', 'LM101', '小型', '个', 'xxx');
+INSERT INTO `mes_product` VALUES (1, '电子模型', '螺丝钉', 'LST101', '小型', '个', 'xxx', 3, 100);
+INSERT INTO `mes_product` VALUES (2, '手机模型', '螺母', 'LM101', '小型', '个', 'xxx', 4, 23);
+INSERT INTO `mes_product` VALUES (14, '产品模型', '螺母', 'LM101', '小型', '个', 'xxx', 5, 31);
 
 -- ----------------------------
 -- Table structure for mes_project_maintenance

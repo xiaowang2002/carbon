@@ -2,6 +2,7 @@ package com.zhonghui.web.mapper;
 
 import com.zhonghui.web.pojo.Product;
 import com.zhonghui.web.request.TechnologyAndProductRequest;
+import com.zhonghui.web.vo.ProductAndConsumptionVO;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,4 +26,6 @@ public interface ProductMapper {
     void add(TechnologyAndProductRequest request);
 
     List<Product> getAll();
+
+    List<ProductAndConsumptionVO> getList();
 }

@@ -28,4 +28,10 @@
         select *
         from mes_product product
     </select>
+
+    <select id="getList" resultType="com.zhonghui.web.vo.ProductAndConsumptionVO">
+        select *,(t2.power_consumption + t2.carbon_emissions) AS total
+        from mes_product t1 left join dv_energy_consumption t2 on t1.dv_id = t2.id
+        order by total desc
+    </select>
 </mapper>

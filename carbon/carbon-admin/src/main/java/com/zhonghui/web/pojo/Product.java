@@ -22,4 +22,6 @@ public class Product {
     private String productSku;
     private String productUnit;
     private String remark;
+    private Long dvId;
+    private Long productedNum;
 }

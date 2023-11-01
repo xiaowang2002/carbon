@@ -2,6 +2,7 @@ package com.zhonghui.web.service;
 
 import com.zhonghui.web.pojo.Product;
 import com.zhonghui.web.request.TechnologyAndProductRequest;
+import com.zhonghui.web.vo.ProductAndConsumptionVO;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
 
 import java.util.List;
@@ -30,4 +31,7 @@ public interface ProductService {
     String add(TechnologyAndProductRequest request);
 
     List<Product> getAllProduct();
+
+    List<ProductAndConsumptionVO> getList();
+
 }

@@ -2,9 +2,11 @@ package com.zhonghui.web.controller.main;
 
 import ch.qos.logback.core.joran.spi.HostClassAndPropertyDouble;
 import cn.hutool.core.bean.BeanUtil;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import com.zhonghui.response.BaseResult;
 import com.zhonghui.web.pojo.Product;
 import com.zhonghui.web.service.ProductService;
+import com.zhonghui.web.vo.ProductAndConsumptionVO;
 import com.zhonghui.web.vo.TechnologyAndProductVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,12 @@ public class ProductController {
     @GetMapping("/list")
     public BaseResult<List<Product>> list() {
         List<Product> list = productService.getAllProduct();
+        return BaseResult.success(list);
+    }
+
+    @GetMapping
+    public BaseResult<List<ProductAndConsumptionVO>> getList() {
+        List<ProductAndConsumptionVO> list = productService.getList();
         return BaseResult.success(list);
     }
 }
