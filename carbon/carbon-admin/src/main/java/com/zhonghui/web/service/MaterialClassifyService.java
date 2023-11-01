@@ -1,6 +1,7 @@
 package com.zhonghui.web.service;
 
 import com.zhonghui.web.pojo.MaterialClassify;
+import com.zhonghui.web.pojo.MaterialClassifyEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -15,4 +16,7 @@ import java.util.Map;
 public interface MaterialClassifyService {
 
     List<MaterialClassify> list();
+
+    List<MaterialClassifyEntity> buildTree();
+
 }

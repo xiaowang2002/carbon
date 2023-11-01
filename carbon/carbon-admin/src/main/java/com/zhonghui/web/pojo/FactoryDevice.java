@@ -21,4 +21,6 @@ public class FactoryDevice {
     private String produceCode;
     private String manufacturer;
     private Long factoryId;
+    private Long dvId;
+    private Long productedNum;
 }

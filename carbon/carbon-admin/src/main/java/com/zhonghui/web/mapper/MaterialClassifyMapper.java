@@ -1,6 +1,7 @@
 package com.zhonghui.web.mapper;
 
 import com.zhonghui.web.pojo.MaterialClassify;
+import com.zhonghui.web.pojo.MaterialClassifyEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -16,4 +17,5 @@ import java.util.List;
 public interface MaterialClassifyMapper {
     List<MaterialClassify> fetchMaterialClassifyData();
 
+    List<MaterialClassifyEntity> buildTree();
 }

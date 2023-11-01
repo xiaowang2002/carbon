@@ -20,4 +20,8 @@
         delete from mes_factory_device_item
         where id = #{id}
     </delete>
+    <select id="list" resultType="com.zhonghui.web.vo.DeviceAndConsumptionVO">
+        select *
+        from mes_factory_device_item t1 left join dv_energy_consumption t2 on t1.dv_id = t2.id
+    </select>
 </mapper>

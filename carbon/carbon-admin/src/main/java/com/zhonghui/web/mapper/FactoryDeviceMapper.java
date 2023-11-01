@@ -1,6 +1,7 @@
 package com.zhonghui.web.mapper;
 
 import com.zhonghui.web.pojo.FactoryDevice;
+import com.zhonghui.web.vo.DeviceAndConsumptionVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -20,5 +21,6 @@ public interface FactoryDeviceMapper {
 
     void deleteById(Long id);
 
+    List<DeviceAndConsumptionVO> list();
 }
 

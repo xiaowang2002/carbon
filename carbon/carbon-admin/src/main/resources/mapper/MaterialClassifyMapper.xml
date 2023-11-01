@@ -6,4 +6,30 @@
     <select id="fetchMaterialClassifyData" resultType="com.zhonghui.web.pojo.MaterialClassify">
         select * from wms_material_classify
     </select>
+
+    <resultMap id="test" type="com.zhonghui.web.pojo.MaterialClassifyEntity">
+        <id column="id" property="id"/>
+        <result column="pid" property="pid"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="remark" property="remark"/>
+        <collection property="list" column="id" select="buildTree2">
+            <id column="id" property="id"/>
+            <result column="pid" property="pid"/>
+            <result column="name" property="name"/>
+            <result column="code" property="code"/>
+            <result column="remark" property="remark"/>
+        </collection>
+    </resultMap>
+    <select id="buildTree2" resultMap="test">
+        select *
+        from wms_material_classify
+        where pid = #{id}
+    </select>
+
+    <select id="buildTree" resultMap="test">
+        select *
+        from wms_material_classify
+        where pid = 0
+    </select>
 </mapper>

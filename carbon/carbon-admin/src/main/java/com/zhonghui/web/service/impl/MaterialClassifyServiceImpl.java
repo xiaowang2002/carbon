@@ -2,6 +2,7 @@ package com.zhonghui.web.service.impl;
 
 import com.zhonghui.web.mapper.MaterialClassifyMapper;
 import com.zhonghui.web.pojo.MaterialClassify;
+import com.zhonghui.web.pojo.MaterialClassifyEntity;
 import com.zhonghui.web.service.MaterialClassifyService;
 import com.zhonghui.web.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,10 @@ public class MaterialClassifyServiceImpl implements MaterialClassifyService {
     @Override
     public List<MaterialClassify> list() {
         return materialClassifyMapper.fetchMaterialClassifyData();
+    }
+
+    @Override
+    public List<MaterialClassifyEntity> buildTree() {
+        return materialClassifyMapper.buildTree();
     }
 }

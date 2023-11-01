@@ -1,12 +1,17 @@
 package com.zhonghui.web.service.impl;
 
+import com.zhonghui.dv.domain.DvEnergyConsumption;
+import com.zhonghui.dv.mapper.DvEnergyConsumptionMapper;
 import com.zhonghui.web.mapper.FactoryDeviceMapper;
 import com.zhonghui.web.mapper.FactoryMapper;
 import com.zhonghui.web.pojo.FactoryDevice;
 import com.zhonghui.web.service.FactoryDeviceService;
+import com.zhonghui.web.vo.DeviceAndConsumptionVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName FactoryDeviceImpl
@@ -21,6 +26,7 @@ public class FactoryDeviceServiceImpl implements FactoryDeviceService {
     @Resource
     private FactoryDeviceMapper factoryDeviceMapper;
 
+
 //    @Override
 //    public void add(FactoryDevice factoryDevice) {
 //        factoryDeviceMapper.add(factoryDevice);
@@ -29,5 +35,10 @@ public class FactoryDeviceServiceImpl implements FactoryDeviceService {
     @Override
     public void deleteById(Long id) {
         factoryDeviceMapper.deleteById(id);
+    }
+
+    @Override
+    public List<DeviceAndConsumptionVO> list() {
+        return factoryDeviceMapper.list();
     }
 }

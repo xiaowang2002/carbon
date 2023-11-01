@@ -1,13 +1,13 @@
 package com.zhonghui.web.controller.main;
 
 import com.zhonghui.response.BaseResult;
+import com.zhonghui.web.pojo.FactoryDevice;
 import com.zhonghui.web.service.FactoryDeviceService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.zhonghui.web.vo.DeviceAndConsumptionVO;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @ClassName FactoryDeviceController
@@ -32,5 +32,11 @@ public class FactoryDeviceController {
     @DeleteMapping
     public BaseResult<Boolean> delete() {
         return BaseResult.success();
+    }
+
+    @GetMapping
+    public BaseResult<List<DeviceAndConsumptionVO>> list() {
+        List<DeviceAndConsumptionVO> list = factoryDeviceService.list();
+        return BaseResult.success(list);
     }
 }

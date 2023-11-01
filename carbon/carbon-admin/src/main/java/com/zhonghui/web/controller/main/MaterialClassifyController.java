@@ -2,6 +2,7 @@ package com.zhonghui.web.controller.main;
 
 import com.zhonghui.web.pojo.Material;
 import com.zhonghui.web.pojo.MaterialClassify;
+import com.zhonghui.web.pojo.MaterialClassifyEntity;
 import com.zhonghui.web.service.MaterialClassifyService;
 import com.zhonghui.web.service.MaterialService;
 import com.zhonghui.web.vo.MaterialClassifyVO;
@@ -30,6 +31,11 @@ public class MaterialClassifyController {
     @Resource
     private MaterialClassifyService materialClassifyService;
 
+    /**
+     * 只能两层
+     *
+     * @return 查询结果
+     */
     @GetMapping("/tree")
     public List<MaterialClassifyVO> buildTree() {
         List<MaterialClassify> list = materialClassifyService.list();
@@ -45,5 +51,18 @@ public class MaterialClassifyController {
                 .filter(vo -> vo.getChildren() != null && !vo.getChildren().isEmpty())
                 .collect(Collectors.toList());
     }
+    /*
+     */
+
+    /**
+     * 第二种实现  可以多层
+     *
+     * @return 查询结果
+     */
+    @GetMapping("/getTree")
+    public List<MaterialClassifyEntity> buildTree2() {
+        return materialClassifyService.buildTree();
+    }
+
 
 }
