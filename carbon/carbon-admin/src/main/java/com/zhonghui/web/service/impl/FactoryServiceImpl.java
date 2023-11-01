@@ -89,7 +89,9 @@ public class FactoryServiceImpl implements FactoryService {
             return item;
         }).collect(Collectors.toList());
 
-        factoryDeviceMapper.add(factoryDeviceList);
+        if (!factoryDeviceList.isEmpty()) {
+            factoryDeviceMapper.add(factoryDeviceList);
+        }
 
         return true;
     }
